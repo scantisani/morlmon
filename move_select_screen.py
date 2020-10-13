@@ -16,7 +16,7 @@ class MoveSelectScreen:
         self.screen = screen
         self.font = font
         self.bg = pygame.image.load('images/moveselect.png')
-        self.arrow = pygame.image.load('images/arrow.png')
+        self.arrow = pygame.image.load('images/rightarrow.png')
         self.move_counters = {1: 0, 2: 0, 3: 0, 4: 0}
 
     def handle_keypress(self, key):
