@@ -1,6 +1,8 @@
 import pygame
 import pygame.freetype
 
+from move_select_screen import MoveSelectScreen
+
 
 class WantsToFightScreen:
     TEXT_BOX_X_START = 40
@@ -11,6 +13,12 @@ class WantsToFightScreen:
         self.screen = screen
         self.font = font
         self.bg = pygame.image.load('images/wantstofight.png')
+
+    def handle_keypress(self, key):
+        if key == pygame.K_RETURN:
+            return MoveSelectScreen(self.screen, self.font)
+        else:
+            return self
 
     def render(self):
         line1 = self.font.render('SYPHILIS wants')[0]
