@@ -34,13 +34,15 @@ MONS = [Mon(name='GNTYCRSPS',
                    Move('ADOPT KITTEN', "You pet a stray kitten and allow it to follow you home. It's super effective!",
                         enemy_damage_fraction=0.5)],
             max_health=55,
-            level=17)]
+            level=17,
+            sprite=pygame.image.load('images/gauntycrisps.png'))]
 current_mon = MONS[0]
 
 ENEMIES = [Mon(name='SYPHILIS',
                moves=[],
                max_health=100,
-               level=14)]
+               level=14,
+               sprite=pygame.image.load('images/syphilis.png'))]
 current_enemy = ENEMIES[0]
 
 current_scene = WantsToFightScene(screen, font)
@@ -75,6 +77,14 @@ def render_stats():
     stats.render(current_mon, current_enemy)
 
 
+def render_sprites():
+    screen.blit(current_mon.sprite, (50, 180))
+
+    # enemies need slightly smaller sprites
+    enemy_sprite = pygame.transform.scale(current_enemy.sprite, (192, 192))
+    screen.blit(enemy_sprite, (400, 20))
+
+
 while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
@@ -89,6 +99,7 @@ while not done:
     current_scene.render()
     if type(current_scene) is not WantsToFightScene:
         render_stats()
+        render_sprites()
 
     pygame.display.flip()
     clock.tick(60)
