@@ -1,13 +1,10 @@
-import math
-
 import pygame
 import pygame.freetype
 
-from enemy_move import EnemyMove
+from enemy_party import EnemyParty
+from party import Party
 from enemy_move_effect_scene import EnemyMoveEffectScene
 from events import TEXT_SCROLL
-from mon import Mon
-from mon_move import MonMove
 from move_effect_scene import MoveEffectScene
 from move_select_scene import MoveSelectScene
 from stats import Stats
@@ -25,30 +22,11 @@ font = pygame.freetype.Font('fonts/pokemongbc.ttf', 30)
 
 done = False
 
-MONS = [Mon(name='GNTYCRSPS',
-            moves=[MonMove('MOURN FATHER',
-                           "You admire KING MORL's many chaste wives and vow to marry one off to a horse one day. "
-                           "It's not very effective..."),
-                   MonMove('SON OF CATBOX', "Son of Catbox of Son of Catbox's Host declared Son of Catbox's Host "
-                                            "Claim on Pissing Myself War on Queen Gaunty Crisps 'The Bear'. "
-                                            "...This is incomprehensible."),
-                   MonMove('SUCCUMB', "You succumb to stage 4 SYPHILIS.", self_damage_fraction=1),
-                   MonMove('ADOPT KITTEN', "You pet a stray kitten and allow it to follow you home. "
-                                           "It's super effective!",
-                           enemy_damage_fraction=0.5)],
-            max_health=55,
-            level=17,
-            sprite=pygame.image.load('images/gauntycrisps.png'))]
-current_mon = MONS[0]
+party = Party()
+current_mon = party.get_current()
 
-ENEMIES = [Mon(name='SYPHILIS',
-               moves=[EnemyMove("SYPHILIS used ULCERS! GAUNTY CRISPS' DEFENCE fell!"),
-                      EnemyMove('SYPHILLIS used SWOLLEN LYMPH NODES!', 0.5),
-                      EnemyMove("SYPHILLIS used BLOTCHY RED RASH! It's super effective!", 0.5)],
-               max_health=100,
-               level=14,
-               sprite=pygame.image.load('images/syphilis.png'))]
-current_enemy = ENEMIES[0]
+enemies = EnemyParty()
+current_enemy = enemies.get_current()
 
 current_scene = WantsToFightScene(screen, font)
 stats = Stats(screen, font)
@@ -65,7 +43,7 @@ def build_next_scene():
         return current_scene
 
     if type(current_scene) is WantsToFightScene:
-        return MoveSelectScene(screen, font, MONS[0])
+        return MoveSelectScene(screen, font, current_mon)
     elif type(current_scene) is MoveSelectScene:
         move = current_scene.most_popular_move()
         move.execute(current_mon, current_enemy)
