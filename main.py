@@ -35,6 +35,9 @@ TEXT_BOX_X_START = 40
 TEXT_BOX_LINE_1_Y = 440
 TEXT_BOX_LINE_2_Y = 500
 
+MON_SPRITE_LOCATION = (50, 180)
+ENEMY_SPRITE_LOCATION = (400, 20)
+
 
 def build_next_scene():
     screen_done = current_scene.done
@@ -67,11 +70,11 @@ def render_stats():
 
 
 def render_sprites():
-    screen.blit(current_mon.sprite, (50, 180))
+    screen.blit(current_mon.sprite, MON_SPRITE_LOCATION)
 
     # enemies need slightly smaller sprites
     enemy_sprite = pygame.transform.scale(current_enemy.sprite, (192, 192))
-    screen.blit(enemy_sprite, (400, 20))
+    screen.blit(enemy_sprite, ENEMY_SPRITE_LOCATION)
 
 
 while not done:
