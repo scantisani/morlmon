@@ -7,3 +7,6 @@ class Mon:
         self.health = max_health
 
         self.level = level
+
+    def health_fraction(self):
+        return self.health / self.max_health
