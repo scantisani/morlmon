@@ -5,6 +5,7 @@ from enemy_party import EnemyParty
 from party import Party
 from enemy_move_effect_scene import EnemyMoveEffectScene
 from events import TEXT_SCROLL
+from faint_scene import FaintScene
 from move_effect_scene import MoveEffectScene
 from move_select_scene import MoveSelectScene
 from stats import Stats
@@ -54,12 +55,20 @@ def build_next_scene():
 
         return MoveEffectScene(screen, font, move)
     elif type(current_scene) is MoveEffectScene:
+        if current_mon.health <= 0:
+            return FaintScene(screen, font, current_mon.sprite)
+
         enemy_move = current_enemy.moves[0]
         enemy_move.execute(current_mon)
         current_enemy.moves.remove(enemy_move)
 
         return EnemyMoveEffectScene(screen, font, enemy_move)
     elif type(current_scene) is EnemyMoveEffectScene:
+        if current_mon.health <= 0:
+            return FaintScene(screen, font, current_mon.sprite)
+
+        return MoveSelectScene(screen, font, current_mon)
+    elif type(current_scene) is FaintScene:
         return MoveSelectScene(screen, font, current_mon)
     else:
         return current_scene
@@ -91,7 +100,8 @@ while not done:
     current_scene.render()
     if type(current_scene) is not WantsToFightScene:
         render_stats()
-        render_sprites()
+        if type(current_scene) is not FaintScene:
+            render_sprites()
 
     pygame.display.flip()
     clock.tick(60)
