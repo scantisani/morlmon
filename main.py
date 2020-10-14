@@ -23,7 +23,7 @@ font = pygame.freetype.Font('fonts/pokemongbc.ttf', 30)
 done = False
 
 MONS = [Mon(name='GNTYCRSPS',
-            moves=(Move('MOURN FATHER',
+            moves=[Move('MOURN FATHER',
                         "You admire KING MORL's many chaste wives and vow to marry one off to a horse one day. "
                         "It's not very effective..."),
                    Move('SON OF CATBOX', "Son of Catbox of Son of Catbox's Host declared Son of Catbox's Host Claim on "
@@ -31,8 +31,7 @@ MONS = [Mon(name='GNTYCRSPS',
                                          "...This is incomprehensible."),
                    Move('SUCCUMB', "You succumb to stage 4 SYPHILIS.", 1),
                    Move('ADOPT KITTEN', "You pet a stray kitten and allow it to follow you home. It's super effective!",
-                        0.5)
-                   ),
+                        0.5)],
             max_health=55,
             level=17)]
 current_mon = MONS[0]
@@ -71,6 +70,8 @@ def build_next_scene():
     elif type(current_scene) is MoveSelectScene:
         move = current_scene.most_popular_move()
         move.execute(current_mon)
+        current_mon.moves.remove(move)
+
         return MoveEffectScene(screen, font, move)
     elif type(current_scene) is MoveEffectScene:
         return MoveSelectScene(screen, font, current_mon)

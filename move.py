@@ -7,8 +7,6 @@ class Move:
         self.text = text
         self.damage_fraction = damage_fraction
 
-        self.used = False
-
     def lines(self):
         lines = []
         text_left = self.text
