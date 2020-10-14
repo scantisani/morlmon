@@ -9,10 +9,8 @@ class WantsToFightScene(Scene):
     TEXT_BOX_LINE_1_Y = 440
     TEXT_BOX_LINE_2_Y = 500
 
-    def __init__(self, screen, font, mon_name):
+    def __init__(self, screen, font):
         super().__init__(screen, font)
-        self.mon_name = mon_name
-
         self.bg = pygame.image.load('images/wantstofight.png')
 
     def handle_keypress(self, key):
@@ -25,7 +23,7 @@ class WantsToFightScene(Scene):
         self.done = True
 
     def render(self):
-        line1 = self.font.render(f'{self.mon_name}')[0]
+        line1 = self.font.render('THE POPE')[0]
         line2 = self.font.render('wants to fight!')[0]
 
         self.screen.blit(self.bg, (0, 0))

@@ -43,7 +43,7 @@ ENEMIES = [Mon(name='SYPHILIS',
                level=14)]
 current_enemy = ENEMIES[0]
 
-current_scene = WantsToFightScene(screen, font, current_mon.name)
+current_scene = WantsToFightScene(screen, font)
 stats = Stats(screen, font)
 
 TEXT_BOX_X_START = 40
