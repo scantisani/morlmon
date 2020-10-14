@@ -1,3 +1,5 @@
+import math
+
 import pygame
 import pygame.freetype
 
@@ -26,8 +28,9 @@ MONS = [Mon(name='GNTYCRSPS',
                    Move('SON OF CATBOX', "Son of Catbox of Son of Catbox's Host declared Son of Catbox's Host Claim on "
                                          "Pissing Myself War on Queen Gaunty Crisps 'The Bear'. "
                                          "...This is incomprehensible."),
-                   Move('SUCCUMB', "You succumb to stage 4 SYPHILIS."),
-                   Move('ADOPT KITTEN', "You pet a stray kitten and allow it to follow you home. It's super effective!")
+                   Move('SUCCUMB', "You succumb to stage 4 SYPHILIS.", 1),
+                   Move('ADOPT KITTEN', "You pet a stray kitten and allow it to follow you home. It's super effective!",
+                        0.5)
                    ),
             max_health=55,
             level=17)]
@@ -69,6 +72,7 @@ def build_next_scene():
         return MoveSelectScene(screen, font, MONS[0])
     elif type(current_scene) is MoveSelectScene:
         move = current_scene.most_popular_move()
+        move.execute(current_mon)
         return MoveEffectScene(screen, font, move)
     elif type(current_scene) is MoveEffectScene:
         return MoveSelectScene(screen, font, current_mon)
@@ -89,8 +93,9 @@ def render_stats():
     name = font.render(current_mon.name)[0]
     screen.blit(name, (NAME_X, NAME_Y))
 
-    health_bar_width = current_mon.health_fraction() * HEALTH_BAR_WIDTH
-    pygame.draw.rect(screen, (96, 96, 96), (HEALTH_BAR_X, HEALTH_BAR_Y, health_bar_width, HEALTH_BAR_HEIGHT))
+    health_bar_width = math.floor(current_mon.health_fraction() * HEALTH_BAR_WIDTH)
+    if health_bar_width > 0:
+        pygame.draw.rect(screen, (96, 96, 96), (HEALTH_BAR_X, HEALTH_BAR_Y, health_bar_width, HEALTH_BAR_HEIGHT))
 
 
 while not done:

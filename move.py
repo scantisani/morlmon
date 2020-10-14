@@ -1,7 +1,11 @@
+import math
+
+
 class Move:
-    def __init__(self, name, text):
+    def __init__(self, name, text, damage_fraction=0):
         self.name = name
         self.text = text
+        self.damage_fraction = damage_fraction
 
         self.used = False
 
@@ -18,3 +22,6 @@ class Move:
 
         lines.append(text_left)
         return lines
+
+    def execute(self, mon):
+        mon.health -= math.ceil(mon.max_health * self.damage_fraction)
