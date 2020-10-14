@@ -1,10 +1,10 @@
 import pygame
 import pygame.freetype
 
-from screen import Screen
+from scene import Scene
 
 
-class MoveSelectScreen(Screen):
+class MoveSelectScene(Scene):
     ARROW_X = 160
 
     MOVE_X = 190

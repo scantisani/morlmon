@@ -1,10 +1,10 @@
 import pygame
 import pygame.freetype
 
-from screen import Screen
+from scene import Scene
 
 
-class WantsToFightScreen(Screen):
+class WantsToFightScene(Scene):
     TEXT_BOX_X_START = 40
     TEXT_BOX_LINE_1_Y = 440
     TEXT_BOX_LINE_2_Y = 500

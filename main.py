@@ -3,9 +3,9 @@ import pygame.freetype
 
 from mon import Mon
 from move import Move
-from move_effect_screen import MoveEffectScreen
-from move_select_screen import MoveSelectScreen
-from wants_to_fight_screen import WantsToFightScreen
+from move_effect_scene import MoveEffectScene
+from move_select_scene import MoveSelectScene
+from wants_to_fight_scene import WantsToFightScene
 
 WIDTH = 648
 HEIGHT = 584
@@ -31,7 +31,7 @@ MONS = [Mon('GAUNTY CRISPS',
              ))]
 current_mon = MONS[0]
 
-current_screen = WantsToFightScreen(screen, font, current_mon.name)
+current_scene = WantsToFightScene(screen, font, current_mon.name)
 
 TEXT_BOX_X_START = 40
 TEXT_BOX_LINE_1_Y = 440
@@ -43,21 +43,21 @@ pygame.time.set_timer(TEXT_SCROLL, 2 * 1000)
 bg = pygame.image.load('images/blank.png')
 
 
-def build_next_screen():
-    screen_done = current_screen.done
+def build_next_scene():
+    screen_done = current_scene.done
 
     if not screen_done:
-        return current_screen
+        return current_scene
 
-    if type(current_screen) is WantsToFightScreen:
-        return MoveSelectScreen(screen, font, MONS[0])
-    elif type(current_screen) is MoveSelectScreen:
-        move = current_screen.most_popular_move()
-        return MoveEffectScreen(screen, font, move)
-    elif type(current_screen) is MoveEffectScreen:
-        return MoveSelectScreen(screen, font, current_mon)
+    if type(current_scene) is WantsToFightScene:
+        return MoveSelectScene(screen, font, MONS[0])
+    elif type(current_scene) is MoveSelectScene:
+        move = current_scene.most_popular_move()
+        return MoveEffectScene(screen, font, move)
+    elif type(current_scene) is MoveEffectScene:
+        return MoveSelectScene(screen, font, current_mon)
     else:
-        return current_screen
+        return current_scene
 
 
 while not done:
@@ -65,12 +65,12 @@ while not done:
         if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
             done = True
         if event.type == pygame.KEYDOWN:
-            current_screen.handle_keypress(event.key)
+            current_scene.handle_keypress(event.key)
         elif event.type == TEXT_SCROLL:
-            current_screen.handle_text_scroll()
+            current_scene.handle_text_scroll()
 
-    current_screen = build_next_screen()
+    current_scene = build_next_scene()
 
-    current_screen.render()
+    current_scene.render()
     pygame.display.flip()
     clock.tick(60)

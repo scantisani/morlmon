@@ -1,4 +1,4 @@
-class Screen:
+class Scene:
     def __init__(self, screen, font):
         self.screen = screen
         self.font = font
