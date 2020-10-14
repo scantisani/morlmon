@@ -30,12 +30,18 @@ MONS = [Mon(name='GNTYCRSPS',
                    Move('SON OF CATBOX', "Son of Catbox of Son of Catbox's Host declared Son of Catbox's Host Claim on "
                                          "Pissing Myself War on Queen Gaunty Crisps 'The Bear'. "
                                          "...This is incomprehensible."),
-                   Move('SUCCUMB', "You succumb to stage 4 SYPHILIS.", 1),
+                   Move('SUCCUMB', "You succumb to stage 4 SYPHILIS.", self_damage_fraction=1),
                    Move('ADOPT KITTEN', "You pet a stray kitten and allow it to follow you home. It's super effective!",
-                        0.5)],
+                        enemy_damage_fraction=0.5)],
             max_health=55,
             level=17)]
 current_mon = MONS[0]
+
+ENEMIES = [Mon(name='SYPHILIS',
+               moves=[],
+               max_health=100,
+               level=14)]
+current_enemy = ENEMIES[0]
 
 current_scene = WantsToFightScene(screen, font, current_mon.name)
 stats = Stats(screen, font)
@@ -55,7 +61,7 @@ def build_next_scene():
         return MoveSelectScene(screen, font, MONS[0])
     elif type(current_scene) is MoveSelectScene:
         move = current_scene.most_popular_move()
-        move.execute(current_mon)
+        move.execute(current_mon, current_enemy)
         current_mon.moves.remove(move)
 
         return MoveEffectScene(screen, font, move)
@@ -66,7 +72,7 @@ def build_next_scene():
 
 
 def render_stats():
-    stats.render(current_mon)
+    stats.render(current_mon, current_enemy)
 
 
 while not done:
