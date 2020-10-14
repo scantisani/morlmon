@@ -3,6 +3,7 @@ import math
 import pygame
 import pygame.freetype
 
+from events import TEXT_SCROLL
 from mon import Mon
 from move import Move
 from move_effect_scene import MoveEffectScene
@@ -57,9 +58,6 @@ LEVEL_Y = 265
 
 NAME_X = 325
 NAME_Y = 230
-
-TEXT_SCROLL = pygame.USEREVENT + 1
-pygame.time.set_timer(TEXT_SCROLL, 2 * 1000)
 
 
 def build_next_scene():
