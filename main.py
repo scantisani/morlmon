@@ -8,6 +8,7 @@ from mon import Mon
 from move import Move
 from move_effect_scene import MoveEffectScene
 from move_select_scene import MoveSelectScene
+from stats import Stats
 from wants_to_fight_scene import WantsToFightScene
 
 WIDTH = 648
@@ -37,26 +38,11 @@ MONS = [Mon(name='GNTYCRSPS',
 current_mon = MONS[0]
 
 current_scene = WantsToFightScene(screen, font, current_mon.name)
+stats = Stats(screen, font)
 
 TEXT_BOX_X_START = 40
 TEXT_BOX_LINE_1_Y = 440
 TEXT_BOX_LINE_2_Y = 500
-
-HEALTH_Y = 330
-HEALTH_X = 380
-MAX_HEALTH_X = 500
-
-HEALTH_BAR_X = 388
-HEALTH_BAR_Y = 304
-
-HEALTH_BAR_WIDTH = 192
-HEALTH_BAR_HEIGHT = 8
-
-LEVEL_X = 485
-LEVEL_Y = 265
-
-NAME_X = 325
-NAME_Y = 230
 
 
 def build_next_scene():
@@ -80,21 +66,7 @@ def build_next_scene():
 
 
 def render_stats():
-    health = font.render(str(current_mon.health))[0]
-    max_health = font.render(str(current_mon.max_health))[0]
-
-    screen.blit(health, (HEALTH_X, HEALTH_Y))
-    screen.blit(max_health, (MAX_HEALTH_X, HEALTH_Y))
-
-    level = font.render(str(current_mon.level))[0]
-    screen.blit(level, (LEVEL_X, LEVEL_Y))
-
-    name = font.render(current_mon.name)[0]
-    screen.blit(name, (NAME_X, NAME_Y))
-
-    health_bar_width = math.floor(current_mon.health_fraction() * HEALTH_BAR_WIDTH)
-    if health_bar_width > 0:
-        pygame.draw.rect(screen, (96, 96, 96), (HEALTH_BAR_X, HEALTH_BAR_Y, health_bar_width, HEALTH_BAR_HEIGHT))
+    stats.render(current_mon)
 
 
 while not done:
