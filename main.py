@@ -19,16 +19,18 @@ font = pygame.freetype.Font('fonts/pokemongbc.ttf', 30)
 
 done = False
 
-MONS = [Mon('GAUNTY CRISPS',
-            (Move('MOURN FATHER',
-                  "You admire KING MORL's many chaste wives and vow to marry one off to a horse one day. It's not "
-                  "very effective..."),
-             Move('SON OF CATBOX', "Son of Catbox of Son of Catbox's Host declared Son of Catbox's Host Claim on "
-                                   "Pissing Myself War on Queen Gaunty Crisps 'The Bear'. "
-                                   "...This is incomprehensible."),
-             Move('SUCCUMB', "You succumb to stage 4 SYPHILIS."),
-             Move('ADOPT KITTEN', "You pet a stray kitten and allow it to follow you home. It's super effective!")
-             ))]
+MONS = [Mon(name='GNTYCRSPS',
+            moves=(Move('MOURN FATHER',
+                        "You admire KING MORL's many chaste wives and vow to marry one off to a horse one day. "
+                        "It's not very effective..."),
+                   Move('SON OF CATBOX', "Son of Catbox of Son of Catbox's Host declared Son of Catbox's Host Claim on "
+                                         "Pissing Myself War on Queen Gaunty Crisps 'The Bear'. "
+                                         "...This is incomprehensible."),
+                   Move('SUCCUMB', "You succumb to stage 4 SYPHILIS."),
+                   Move('ADOPT KITTEN', "You pet a stray kitten and allow it to follow you home. It's super effective!")
+                   ),
+            max_health=55,
+            level=17)]
 current_mon = MONS[0]
 
 current_scene = WantsToFightScene(screen, font, current_mon.name)
@@ -37,10 +39,18 @@ TEXT_BOX_X_START = 40
 TEXT_BOX_LINE_1_Y = 440
 TEXT_BOX_LINE_2_Y = 500
 
+HEALTH_Y = 330
+HEALTH_X = 380
+MAX_HEALTH_X = 500
+
+LEVEL_X = 485
+LEVEL_Y = 265
+
+NAME_X = 325
+NAME_Y = 230
+
 TEXT_SCROLL = pygame.USEREVENT + 1
 pygame.time.set_timer(TEXT_SCROLL, 2 * 1000)
-
-bg = pygame.image.load('images/blank.png')
 
 
 def build_next_scene():
@@ -60,6 +70,20 @@ def build_next_scene():
         return current_scene
 
 
+def render_stats():
+    health = font.render(str(current_mon.health))[0]
+    max_health = font.render(str(current_mon.max_health))[0]
+
+    screen.blit(health, (HEALTH_X, HEALTH_Y))
+    screen.blit(max_health, (MAX_HEALTH_X, HEALTH_Y))
+
+    level = font.render(str(current_mon.level))[0]
+    screen.blit(level, (LEVEL_X, LEVEL_Y))
+
+    name = font.render(current_mon.name)[0]
+    screen.blit(name, (NAME_X, NAME_Y))
+
+
 while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
@@ -72,5 +96,8 @@ while not done:
     current_scene = build_next_scene()
 
     current_scene.render()
+    if type(current_scene) is not WantsToFightScene:
+        render_stats()
+
     pygame.display.flip()
     clock.tick(60)
