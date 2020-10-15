@@ -9,7 +9,10 @@ from scenes.faint_scene import FaintScene
 from scenes.move_effect_scene import MoveEffectScene
 from scenes.move_select_scene import MoveSelectScene
 from party import Party
-from scenes.pope_scene import PopeScene
+from scenes.pope.pope_dragon_scene import PopeDragonScene
+from scenes.pope.pope_enough_scene import PopeEnoughScene
+from scenes.pope.pope_faint_scene import PopeFaintScene
+from scenes.pope.pope_scene import PopeScene
 from stats import Stats
 from scenes.wants_to_fight_scene import WantsToFightScene
 
@@ -63,8 +66,14 @@ class Game:
         elif type(self.current_scene) is EnemyFaintScene:
             return self.enemy_faint_next_scene()
 
-        elif type(self.current_scene) is PopeScene:
-            return self.pope_next_scene()
+        elif type(self.current_scene) is PopeEnoughScene:
+            return self.pope_enough_next_scene()
+
+        elif type(self.current_scene) is PopeFaintScene:
+            return self.pope_faint_next_scene()
+
+        elif type(self.current_scene) is PopeDragonScene:
+            return self.pope_dragon_next_scene()
 
         else:
             return self.current_scene
@@ -103,9 +112,6 @@ class Game:
         self.current_mon = self.party.get_next()
         self.current_enemy.use_next_moveset()
 
-        if self.current_mon.name == 'GLTTERHOOF':
-            return PopeScene(self.screen, self.font, 'THE POPE uses the DRAGON BALLS!')
-
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
     def enemy_faint_next_scene(self):
@@ -113,15 +119,21 @@ class Game:
         self.current_mon.use_next_moveset()
 
         if self.current_enemy.name == 'FNYHEIR (DRGN)':
-            return PopeScene(self.screen, self.font, 'THE POPE has had enough of this. THE POPE caves your head in.')
+            return PopeEnoughScene(self.screen, self.font)
 
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
-    def pope_next_scene(self):
-        if self.current_mon.name == 'FUNNY HEIR':
-            self.current_mon.health = 0
-            return FaintScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.name)
+    def pope_enough_next_scene(self):
+        self.current_mon.health = 0  # kill FUNNY HEIR
+        return PopeFaintScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.name)
 
+    def pope_faint_next_scene(self):
+        self.current_mon = self.party.get_next()
+        self.current_enemy.use_next_moveset()
+
+        return PopeDragonScene(self.screen, self.font)
+
+    def pope_dragon_next_scene(self):
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
     def render_enemy_sprite(self):
