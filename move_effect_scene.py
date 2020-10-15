@@ -1,7 +1,6 @@
 import pygame
 import pygame.freetype
 
-from events import TEXT_SCROLL
 from scene import Scene
 
 
@@ -14,8 +13,6 @@ class MoveEffectScene(Scene):
         super().__init__(screen, font)
 
         self.lines = move.lines()
-        pygame.time.set_timer(TEXT_SCROLL, 2 * 1000)
-
         self.bg = pygame.image.load('images/moveeffect.png')
 
     def handle_keypress(self, key):
