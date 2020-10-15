@@ -84,7 +84,8 @@ class EnemyParty:
                                 Move("URIEL gives the AZTECS oars! The AZTECS invade PISSING MYSELF!",
                                      target_damage_fraction=0.25)]],
                      level=943,
-                     sprite=pygame.image.load('images/uriel.png')),
+                     sprite=pygame.image.load('images/uriel.png'),
+                     epitaph='URIEL returns to HEAVEN!')
                ]
 
     def __init__(self):
