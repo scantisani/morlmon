@@ -15,7 +15,7 @@ class EnemyParty:
                                 Move("SYPHILIS used GASLIGHTING!", target_damage_fraction=0.2)]],
                      level=14,
                      sprite=pygame.image.load('images/syphilis.png'),
-                     death_text=' was cured!'),
+                     epitaph='SYPHILIS was cured!'),
 
                Enemy(name='THE WHEEL',
                      movesets=[[],
@@ -37,7 +37,7 @@ class EnemyParty:
                                      "denies everything.", self_damage_fraction=1)]],
                      level='30?',
                      sprite=pygame.image.load('images/borley.png'),
-                     death_text=' logs off!'),
+                     epitaph='BORLEY logs off!'),
 
                Enemy(name='FNYHEIR (DRGN)',
                      movesets=[[],
@@ -72,10 +72,11 @@ class EnemyParty:
 
                                [Move("The TWO GOATS get more hysterical."),
                                 Move("It's not helping."),
-                                Move("The TWO GOATS call it a day and go eat some fudge. The TWO GOATS log off!",
+                                Move("The TWO GOATS call it a day and go eat some fudge.",
                                      self_damage_fraction=1)]],
                      level=69,
-                     sprite=pygame.image.load('images/twogoats.png')),
+                     sprite=pygame.image.load('images/twogoats.png'),
+                     epitaph='The TWO GOATS log off!'),
 
                Enemy(name='URIEL',
                      movesets=[[Move("URIEL makes everyone hate you!", target_damage_fraction=0.25),

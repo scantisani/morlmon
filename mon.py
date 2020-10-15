@@ -1,5 +1,5 @@
 class Mon:
-    def __init__(self, name, movesets, max_health, level, sprite, death_text=' dies!'):
+    def __init__(self, name, movesets, max_health, level, sprite, epitaph=None):
         self.name = name
         self.movesets = movesets
         self.moveset_index = 0
@@ -9,7 +9,7 @@ class Mon:
 
         self.level = level
         self.sprite = sprite
-        self.death_text = death_text
+        self.epitaph = self.name + ' dies!' if epitaph is None else epitaph
 
     def health_fraction(self):
         return self.health / self.max_health
@@ -23,6 +23,3 @@ class Mon:
 
     def moves(self):
         return self.movesets[self.moveset_index]
-
-    def epitaph(self):
-        return self.name + self.death_text

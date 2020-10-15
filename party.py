@@ -110,7 +110,7 @@ class Party:
                 max_health=159,
                 level=56,
                 sprite=pygame.image.load('images/eldritch.png'),
-                death_text=' retires!'),
+                epitaph='ANDREW ELDRITCH retires!'),
 
             Mon(name='MARTIINUS',
                 movesets=[[MonMove('SUPER SAIYAN',

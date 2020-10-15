@@ -97,9 +97,9 @@ class Game:
 
     def move_effect_next_scene(self):
         if self.current_mon.health <= 0:
-            return FaintScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.epitaph())
+            return FaintScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.epitaph)
         if self.current_enemy.health <= 0:
-            return EnemyFaintScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.epitaph())
+            return EnemyFaintScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.epitaph)
 
         enemy_move = self.current_enemy.moves()[0]
         enemy_move.execute(self.current_enemy, self.current_mon)
@@ -109,9 +109,9 @@ class Game:
 
     def enemy_move_next_scene(self):
         if self.current_mon.health <= 0:
-            return FaintScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.epitaph())
+            return FaintScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.epitaph)
         if self.current_enemy.health <= 0:
-            return EnemyFaintScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.epitaph())
+            return EnemyFaintScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.epitaph)
 
         # If the TWO GOATS' first moveset is exhausted, use the next moveset for both them and current mon
         if (self.current_enemy.name == 'TWO GOATS'
@@ -148,7 +148,7 @@ class Game:
 
     def pope_enough_next_scene(self):
         self.current_mon.health = 0  # kill FUNNY HEIR
-        return PopeFaintScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.epitaph())
+        return PopeFaintScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.epitaph)
 
     def pope_faint_next_scene(self):
         self.current_mon = self.party.get_next()
