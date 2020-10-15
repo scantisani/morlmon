@@ -45,41 +45,63 @@ class Game:
             return self.current_scene
 
         if type(self.current_scene) is WantsToFightScene:
-            return MoveSelectScene(self.screen, self.font, self.current_mon)
+            return self.wants_to_fight_next_scene()
+
         elif type(self.current_scene) is MoveSelectScene:
-            move = self.current_scene.most_popular_move()
-            move.execute(self.current_mon, self.current_enemy)
-            self.current_mon.moves.remove(move)
+            return self.move_select_next_scene()
 
-            return MoveEffectScene(self.screen, self.font, move)
         elif type(self.current_scene) is MoveEffectScene:
-            if self.current_mon.health <= 0:
-                return FaintScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.name)
-            if self.current_enemy.health <= 0:
-                return EnemyFaintScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.name)
+            return self.move_effect_next_scene()
 
-            enemy_move = self.current_enemy.moves[0]
-            enemy_move.execute(self.current_enemy, self.current_mon)
-            self.current_enemy.moves.remove(enemy_move)
-
-            return EnemyMoveEffectScene(self.screen, self.font, enemy_move)
         elif type(self.current_scene) is EnemyMoveEffectScene:
-            if self.current_mon.health <= 0:
-                return FaintScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.name)
-            if self.current_enemy.health <= 0:
-                return EnemyFaintScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.name)
+            return self.enemy_move_next_scene()
 
-            return MoveSelectScene(self.screen, self.font, self.current_mon)
         elif type(self.current_scene) is FaintScene:
-            self.current_mon = self.party.get_next()
+            return self.faint_next_scene()
 
-            return MoveSelectScene(self.screen, self.font, self.current_mon)
         elif type(self.current_scene) is EnemyFaintScene:
-            self.current_enemy = self.enemies.get_next()
+            return self.enemy_faint_next_scene()
 
-            return MoveSelectScene(self.screen, self.font, self.current_mon)
         else:
             return self.current_scene
+
+    def wants_to_fight_next_scene(self):
+        return MoveSelectScene(self.screen, self.font, self.current_mon)
+
+    def move_select_next_scene(self):
+        move = self.current_scene.most_popular_move()
+        move.execute(self.current_mon, self.current_enemy)
+        self.current_mon.moves.remove(move)
+
+        return MoveEffectScene(self.screen, self.font, move)
+
+    def move_effect_next_scene(self):
+        if self.current_mon.health <= 0:
+            return FaintScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.name)
+        if self.current_enemy.health <= 0:
+            return EnemyFaintScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.name)
+
+        enemy_move = self.current_enemy.moves[0]
+        enemy_move.execute(self.current_enemy, self.current_mon)
+        self.current_enemy.moves.remove(enemy_move)
+
+        return EnemyMoveEffectScene(self.screen, self.font, enemy_move)
+
+    def enemy_move_next_scene(self):
+        if self.current_mon.health <= 0:
+            return FaintScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.name)
+        if self.current_enemy.health <= 0:
+            return EnemyFaintScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.name)
+
+        return MoveSelectScene(self.screen, self.font, self.current_mon)
+
+    def faint_next_scene(self):
+        self.current_mon = self.party.get_next()
+        return MoveSelectScene(self.screen, self.font, self.current_mon)
+
+    def enemy_faint_next_scene(self):
+        self.current_enemy = self.enemies.get_next()
+        return MoveSelectScene(self.screen, self.font, self.current_mon)
 
     def render_stats(self):
         self.stats.render(self.current_mon, self.current_enemy)
