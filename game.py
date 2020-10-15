@@ -13,6 +13,9 @@ from party import Party
 from scenes.pope.pope_dragon_scene import PopeDragonScene
 from scenes.pope.pope_enough_scene import PopeEnoughScene
 from scenes.pope.pope_faint_scene import PopeFaintScene
+from scenes.pope.pope_knock_scene import PopeKnockScene
+from scenes.pope.pope_last_words_scene import PopeLastWordsScene
+from scenes.pope.pope_steps_scene import PopeStepsScene
 from scenes.reincarnation_scene import ReincarnationScene
 from stats import Stats
 from scenes.wants_to_fight_scene import WantsToFightScene
@@ -79,6 +82,15 @@ class Game:
         elif type(self.current_scene) is PopeFaintScene:
             return self.pope_faint_next_scene()
 
+        elif type(self.current_scene) is PopeKnockScene:
+            return self.pope_knock_next_scene()
+
+        elif type(self.current_scene) is PopeStepsScene:
+            return self.pope_steps_next_scene()
+
+        elif type(self.current_scene) is PopeLastWordsScene:
+            return self.pope_last_words_next_scene()
+
         elif type(self.current_scene) is PopeDragonScene:
             return self.pope_dragon_next_scene()
 
@@ -143,6 +155,8 @@ class Game:
 
         if self.current_enemy.name == 'FNYHEIR (DRGN)':
             return PopeEnoughScene(self.screen, self.font)
+        elif self.current_enemy.name == 'URIEL':
+            return PopeStepsScene(self.screen, self.font)
 
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
@@ -157,6 +171,16 @@ class Game:
         return PopeDragonScene(self.screen, self.font)
 
     def pope_dragon_next_scene(self):
+        return MoveSelectScene(self.screen, self.font, self.current_mon)
+
+    def pope_steps_next_scene(self):
+        self.current_mon.damage(0.2)
+        return PopeKnockScene(self.screen, self.font)
+
+    def pope_knock_next_scene(self):
+        return PopeLastWordsScene(self.screen, self.font)
+
+    def pope_last_words_next_scene(self):
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
     def render_enemy_sprite(self):

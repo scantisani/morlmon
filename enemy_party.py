@@ -85,7 +85,13 @@ class EnemyParty:
                                      target_damage_fraction=0.25)]],
                      level=943,
                      sprite=pygame.image.load('images/uriel.png'),
-                     epitaph='URIEL returns to HEAVEN!')
+                     epitaph='URIEL returns to HEAVEN!'),
+
+               Enemy(name='THE POPE',
+                     movesets=[[]],
+                     level='??',
+                     sprite=pygame.image.load('images/pope.png'),
+                     epitaph='THE POPE falls to the ground. THE LAST HUMAN POPE dies.')
                ]
 
     def __init__(self):
