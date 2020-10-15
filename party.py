@@ -41,7 +41,7 @@ class Party:
                            MonMove('OPEN THE ARK',
                                    "Before you can do anything, FUNNY HEIR takes you to the woods and kills you.",
                                    self_damage_fraction=1),
-                           MonMove('KILL FUNNY HEIR',
+                           MonMove('KILL FUNNYHEIR',
                                    "Before you can do anything, FUNNY HEIR takes you to the woods and kills you.",
                                    self_damage_fraction=1),
                            MonMove('SPAMBOT POPE',
