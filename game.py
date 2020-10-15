@@ -1,6 +1,7 @@
 import pygame
 import pygame.freetype
 
+from scenes.chip_spice_scene import ChipSpiceScene
 from scenes.enemy_faint_scene import EnemyFaintScene
 from scenes.enemy_move_effect_scene import EnemyMoveEffectScene
 from enemy_party import EnemyParty
@@ -69,6 +70,9 @@ class Game:
         elif type(self.current_scene) is ReincarnationScene:
             return self.reincarnation_next_scene()
 
+        elif type(self.current_scene) is ChipSpiceScene:
+            return self.chip_spice_next_scene()
+
         elif type(self.current_scene) is PopeEnoughScene:
             return self.pope_enough_next_scene()
 
@@ -121,6 +125,9 @@ class Game:
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
     def reincarnation_next_scene(self):
+        return ChipSpiceScene(self.screen, self.font)
+
+    def chip_spice_next_scene(self):
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
     def enemy_faint_next_scene(self):
