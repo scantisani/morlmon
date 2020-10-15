@@ -1,6 +1,3 @@
-import math
-
-
 class Move:
     def __init__(self, text, enemy_damage_fraction=0):
         self.text = text
