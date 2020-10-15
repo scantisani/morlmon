@@ -105,10 +105,12 @@ class Party:
                                    "Last night you have a strange vision of the future. You see two goats in "
                                    "Barnstaple. You become confused!"),
                            MonMove('SHEFFIELD',
-                                   "You retire to Sheffield to take up a career as a Scryer Horse.")]],
+                                   "You retire to Sheffield to take up a career as a Scryer Horse.",
+                                   self_damage_fraction=1)]],
                 max_health=159,
                 level=56,
-                sprite=pygame.image.load('images/eldritch.png')),
+                sprite=pygame.image.load('images/eldritch.png'),
+                death_text=' retires!'),
 
             Mon(name='MARTIINUS',
                 movesets=[[MonMove('SUPER SAIYAN',

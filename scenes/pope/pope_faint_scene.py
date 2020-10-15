@@ -6,8 +6,8 @@ from scenes.faint_scene import FaintScene
 class PopeFaintScene(FaintScene):
     ENEMY_SPRITE_LOCATION = (400, 20)
 
-    def __init__(self, screen, font, sprite, mon_name):
-        super().__init__(screen, font, sprite, mon_name)
+    def __init__(self, screen, font, sprite, epitaph):
+        super().__init__(screen, font, sprite, epitaph)
 
         self.pope_sprite = pygame.transform.scale(pygame.image.load('images/pope.png'), (192, 192))
 

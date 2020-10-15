@@ -1,13 +1,12 @@
 import pygame
 
-from scenes.scene import Scene
+from scenes.effect_scene import EffectScene
 
 
-class FaintScene(Scene):
-    def __init__(self, screen, font, sprite, mon_name, sprite_x=50, sprite_y=170):
-        super().__init__(screen, font)
+class FaintScene(EffectScene):
+    def __init__(self, screen, font, sprite, epitaph, sprite_x=50, sprite_y=170):
+        super().__init__(screen, font, epitaph)
         self.sprite = sprite
-        self.mon_name = mon_name
 
         self.sprite_x = sprite_x
         self.sprite_y = sprite_y
@@ -29,8 +28,7 @@ class FaintScene(Scene):
             self.sprite_y += 10
             self.sprite_height -= 10
         else:
-            self.screen.blit(self.bg, (0, 0))
-            self.print_text(self.mon_name, 'DIED!')
+            super(FaintScene, self).render()
 
     def handle_text_scroll(self):
         self.set_done()

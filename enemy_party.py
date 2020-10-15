@@ -14,7 +14,8 @@ class EnemyParty:
                                 Move("SYPHILIS used SOCIAL STIGMA!", target_damage_fraction=0.2),
                                 Move("SYPHILIS used GASLIGHTING!", target_damage_fraction=0.2)]],
                      level=14,
-                     sprite=pygame.image.load('images/syphilis.png')),
+                     sprite=pygame.image.load('images/syphilis.png'),
+                     death_text=' was cured!'),
 
                Enemy(name='THE WHEEL',
                      movesets=[[],
@@ -33,9 +34,10 @@ class EnemyParty:
                                      "than polls can handle! Critical Hit!",
                                      target_damage_fraction=0.9),
                                 Move("BORLEY got too big for his boots and is being reprimanded by chat. He now "
-                                     "denies everything. BORLEY logs off!", self_damage_fraction=1)]],
+                                     "denies everything.", self_damage_fraction=1)]],
                      level='30?',
-                     sprite=pygame.image.load('images/borley.png')),
+                     sprite=pygame.image.load('images/borley.png'),
+                     death_text=' logs off!'),
 
                Enemy(name='FNYHEIR (DRGN)',
                      movesets=[[],
