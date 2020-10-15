@@ -4,6 +4,10 @@ from events import TEXT_SCROLL
 
 
 class Scene:
+    TEXT_BOX_X_START = 40
+    TEXT_BOX_LINE_1_Y = 440
+    TEXT_BOX_LINE_2_Y = 500
+
     def __init__(self, screen, font):
         self.screen = screen
         self.font = font
@@ -35,6 +39,16 @@ class Scene:
 
     def show_enemy_stats(self):
         return True
+
+    def print_text(self, line1, line2=None):
+        rendered_line1 = self.font.render(line1)[0]
+        self.screen.blit(rendered_line1, (self.TEXT_BOX_X_START, self.TEXT_BOX_LINE_1_Y))
+
+        if line2 is None:
+            return
+
+        rendered_line2 = self.font.render(line2)[0]
+        self.screen.blit(rendered_line2, (self.TEXT_BOX_X_START, self.TEXT_BOX_LINE_2_Y))
 
     @staticmethod
     def __restart_text_scroll__():
