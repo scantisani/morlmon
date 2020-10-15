@@ -12,7 +12,7 @@ class MoveSelectScene(Scene):
 
     def __init__(self, screen, font, mon):
         super().__init__(screen, font)
-        self.moves = mon.moves
+        self.moves = mon.moves()
 
         self.bg = pygame.image.load('images/moveselect.png')
         self.arrow = pygame.image.load('images/rightarrow.png')

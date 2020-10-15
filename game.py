@@ -71,7 +71,7 @@ class Game:
     def move_select_next_scene(self):
         move = self.current_scene.most_popular_move()
         move.execute(self.current_mon, self.current_enemy)
-        self.current_mon.moves.remove(move)
+        self.current_mon.disable_move(move)
 
         return MoveEffectScene(self.screen, self.font, move)
 
@@ -81,9 +81,9 @@ class Game:
         if self.current_enemy.health <= 0:
             return EnemyFaintScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.name)
 
-        enemy_move = self.current_enemy.moves[0]
+        enemy_move = self.current_enemy.moves()[0]
         enemy_move.execute(self.current_enemy, self.current_mon)
-        self.current_enemy.moves.remove(enemy_move)
+        self.current_enemy.disable_move(enemy_move)
 
         return EnemyMoveEffectScene(self.screen, self.font, enemy_move)
 
@@ -97,10 +97,14 @@ class Game:
 
     def faint_next_scene(self):
         self.current_mon = self.party.get_next()
+        self.current_enemy.use_next_moveset()
+
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
     def enemy_faint_next_scene(self):
         self.current_enemy = self.enemies.get_next()
+        self.current_mon.use_next_moveset()
+
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
     def render_stats(self):
