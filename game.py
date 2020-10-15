@@ -12,7 +12,7 @@ from party import Party
 from scenes.pope.pope_dragon_scene import PopeDragonScene
 from scenes.pope.pope_enough_scene import PopeEnoughScene
 from scenes.pope.pope_faint_scene import PopeFaintScene
-from scenes.pope.pope_scene import PopeScene
+from scenes.reincarnation_scene import ReincarnationScene
 from stats import Stats
 from scenes.wants_to_fight_scene import WantsToFightScene
 
@@ -66,6 +66,9 @@ class Game:
         elif type(self.current_scene) is EnemyFaintScene:
             return self.enemy_faint_next_scene()
 
+        elif type(self.current_scene) is ReincarnationScene:
+            return self.reincarnation_next_scene()
+
         elif type(self.current_scene) is PopeEnoughScene:
             return self.pope_enough_next_scene()
 
@@ -112,6 +115,12 @@ class Game:
         self.current_mon = self.party.get_next()
         self.current_enemy.use_next_moveset()
 
+        if self.current_mon.name == 'ANDRWEDRTCH':
+            return ReincarnationScene(self.screen, self.font)
+
+        return MoveSelectScene(self.screen, self.font, self.current_mon)
+
+    def reincarnation_next_scene(self):
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
     def enemy_faint_next_scene(self):
