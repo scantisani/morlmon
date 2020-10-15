@@ -18,7 +18,24 @@ class Party:
                                enemy_damage_fraction=0.5)],
                 max_health=55,
                 level=17,
-                sprite=pygame.image.load('images/gauntycrisps.png'))]
+                sprite=pygame.image.load('images/gauntycrisps.png')),
+            Mon(name='LUFTI',
+                moves=[MonMove('SUMMON WITCHES',
+                               "MORGANA, CIRCE, JEZEBEL and their Satanic armies come to your rescue. They put SAVLON "
+                               "on your ULCERS!",
+                               enemy_damage_fraction=0.5),
+                       MonMove('MEME MACHINE',
+                               "You hold aloft KING MORL'S ARK! A pillar of holy fire unleashes GOD's wrath!",
+                               enemy_damage_fraction=0.5),
+                       MonMove('FUNNY HEIR',
+                               "You make FUNNY HEIR your Chancellor, but he doesn't seem to like you..."),
+                       MonMove('GREET SPAMBOT',
+                               "A Russian spambot called LEUDUSTNETTICAR85MIK offers to build you a website. You make "
+                               "him your Court Physician. Why?")],
+                max_health=31,
+                level=8,
+                sprite=pygame.image.load('images/lufti.png'))
+            ]
 
     def __init__(self):
         self.party_index = 0

@@ -66,6 +66,8 @@ class Game:
 
             return MoveSelectScene(self.screen, self.font, self.current_mon)
         elif type(self.current_scene) is FaintScene:
+            self.current_mon = self.party.get_next()
+
             return MoveSelectScene(self.screen, self.font, self.current_mon)
         else:
             return self.current_scene
