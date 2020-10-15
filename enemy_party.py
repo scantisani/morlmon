@@ -13,7 +13,6 @@ class EnemyParty:
                                [Move("SYPHILLIS used FLU LIKE SYMPTOMS!", target_damage_fraction=0.2),
                                 Move("SYPHILIS used SOCIAL STIGMA!", target_damage_fraction=0.2),
                                 Move("SYPHILIS used GASLIGHTING!", target_damage_fraction=0.2)]],
-                     max_health=100,
                      level=14,
                      sprite=pygame.image.load('images/syphilis.png')),
 
@@ -24,7 +23,6 @@ class EnemyParty:
                                      "dies of SCURVY."),
                                 Move("The Wheel spins... It lands on THICC! Nice. FUNNY HEIR'S HORNINESS rose!"),
                                 Move("The Wheel spins... It lands on INSTANT DEATH!", self_damage_fraction=1)]],
-                     max_health=100,
                      level=14,
                      sprite=pygame.image.load('images/wheel.png')),
 
@@ -36,7 +34,6 @@ class EnemyParty:
                                      target_damage_fraction=0.9),
                                 Move("BORLEY got too big for his boots and is being reprimanded by chat. He now "
                                      "denies everything. BORLEY logs off!", self_damage_fraction=1)]],
-                     max_health=100,
                      level='30?',
                      sprite=pygame.image.load('images/borley.png')),
 
@@ -60,7 +57,6 @@ class EnemyParty:
                                      "It's not very effective..."),
                                 Move("FUNNY HEIR dies of DEPRESSION!",
                                      self_damage_fraction=1)]],
-                     max_health=100,
                      level=71,
                      sprite=pygame.image.load('images/funnyheir_dragon.png')),
 
@@ -76,7 +72,6 @@ class EnemyParty:
                                 Move("It's not helping."),
                                 Move("The TWO GOATS call it a day and go eat some fudge. The TWO GOATS log off!",
                                      self_damage_fraction=1)]],
-                     max_health=100,
                      level=69,
                      sprite=pygame.image.load('images/twogoats.png')),
 
@@ -85,7 +80,6 @@ class EnemyParty:
                                 Move("URIEL raises a revolt in GRANNY'S GAFF!", target_damage_fraction=0.25),
                                 Move("URIEL gives the AZTECS oars! The AZTECS invade PISSING MYSELF!",
                                      target_damage_fraction=0.25)]],
-                     max_health=100,
                      level=943,
                      sprite=pygame.image.load('images/uriel.png')),
                ]
