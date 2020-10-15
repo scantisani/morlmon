@@ -1,6 +1,7 @@
 import pygame
 import pygame.freetype
 
+from enemy_faint_scene import EnemyFaintScene
 from enemy_move_effect_scene import EnemyMoveEffectScene
 from enemy_party import EnemyParty
 from events import TEXT_SCROLL
@@ -53,7 +54,9 @@ class Game:
             return MoveEffectScene(self.screen, self.font, move)
         elif type(self.current_scene) is MoveEffectScene:
             if self.current_mon.health <= 0:
-                return FaintScene(self.screen, self.font, self.current_mon.sprite)
+                return FaintScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.name)
+            if self.current_enemy.health <= 0:
+                return EnemyFaintScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.name)
 
             enemy_move = self.current_enemy.moves[0]
             enemy_move.execute(self.current_enemy, self.current_mon)
@@ -62,11 +65,17 @@ class Game:
             return EnemyMoveEffectScene(self.screen, self.font, enemy_move)
         elif type(self.current_scene) is EnemyMoveEffectScene:
             if self.current_mon.health <= 0:
-                return FaintScene(self.screen, self.font, self.current_mon.sprite)
+                return FaintScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.name)
+            if self.current_enemy.health <= 0:
+                return EnemyFaintScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.name)
 
             return MoveSelectScene(self.screen, self.font, self.current_mon)
         elif type(self.current_scene) is FaintScene:
             self.current_mon = self.party.get_next()
+
+            return MoveSelectScene(self.screen, self.font, self.current_mon)
+        elif type(self.current_scene) is EnemyFaintScene:
+            self.current_enemy = self.enemies.get_next()
 
             return MoveSelectScene(self.screen, self.font, self.current_mon)
         else:
@@ -75,12 +84,11 @@ class Game:
     def render_stats(self):
         self.stats.render(self.current_mon, self.current_enemy)
 
-    def render_sprites(self):
-        self.screen.blit(self.current_mon.sprite, self.MON_SPRITE_LOCATION)
+    def render_enemy_sprite(self):
+        self.screen.blit(self.current_enemy.sprite, self.ENEMY_SPRITE_LOCATION)
 
-        # enemies need slightly smaller sprites
-        enemy_sprite = pygame.transform.scale(self.current_enemy.sprite, (192, 192))
-        self.screen.blit(enemy_sprite, self.ENEMY_SPRITE_LOCATION)
+    def render_mon_sprite(self):
+        self.screen.blit(self.current_mon.sprite, self.MON_SPRITE_LOCATION)
 
     def run(self):
         while True:
@@ -97,8 +105,11 @@ class Game:
 
             if type(self.current_scene) is not WantsToFightScene:
                 self.render_stats()
+
                 if type(self.current_scene) is not FaintScene:
-                    self.render_sprites()
+                    self.render_mon_sprite()
+                if type(self.current_scene) is not EnemyFaintScene:
+                    self.render_enemy_sprite()
 
             pygame.display.flip()
             self.clock.tick(60)

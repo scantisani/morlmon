@@ -8,12 +8,14 @@ class FaintScene(Scene):
     TEXT_BOX_LINE_1_Y = 440
     TEXT_BOX_LINE_2_Y = 500
 
-    def __init__(self, screen, font, sprite):
+    def __init__(self, screen, font, sprite, mon_name, sprite_x=50, sprite_y=170):
         super().__init__(screen, font)
         self.sprite = sprite
+        self.mon_name = mon_name
 
-        self.sprite_x = 50
-        self.sprite_y = 170
+        self.sprite_x = sprite_x
+        self.sprite_y = sprite_y
+
         self.sprite_height = sprite.get_height()
         self.sprite_width = sprite.get_width()
 
@@ -27,10 +29,8 @@ class FaintScene(Scene):
 
             self.sprite_y += 10
             self.sprite_height -= 10
-            if self.sprite_height == 0:
-                self.set_done()
         else:
-            line1 = self.font.render('GAUNTY CRISPS')[0]
+            line1 = self.font.render(self.mon_name)[0]
             line2 = self.font.render('DIED!')[0]
 
             self.screen.blit(self.bg, (0, 0))
