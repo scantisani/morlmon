@@ -93,7 +93,7 @@ class Party:
                 level=16,
                 sprite=pygame.image.load('images/glitterhoof.png')),
 
-            Mon(name='ANDRWEDRTCH',
+            Mon(name='ADRWEDRTCH',
                 movesets=[[MonMove('GOPHER',
                                    "Your LUSH COUNTRY BEAR is actually a LUSH COUNTRY GOPHER and can therefore "
                                    "assassinate people. It almost works!",

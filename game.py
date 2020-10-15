@@ -115,7 +115,7 @@ class Game:
         self.current_mon = self.party.get_next()
         self.current_enemy.use_next_moveset()
 
-        if self.current_mon.name == 'ANDRWEDRTCH':
+        if self.current_mon.name == 'ADRWEDRTCH':
             return ReincarnationScene(self.screen, self.font)
 
         return MoveSelectScene(self.screen, self.font, self.current_mon)
