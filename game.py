@@ -124,9 +124,6 @@ class Game:
 
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
-    def render_stats(self):
-        self.stats.render(self.current_mon, self.current_enemy)
-
     def render_enemy_sprite(self):
         self.screen.blit(self.current_enemy.sprite, self.ENEMY_SPRITE_LOCATION)
 
@@ -146,14 +143,17 @@ class Game:
             self.current_scene = self.build_next_scene()
             self.current_scene.render()
 
-            if type(self.current_scene) is not WantsToFightScene:
-                self.render_stats()
+            if self.current_scene.show_mon_stats():
+                self.stats.render_mon_stats(self.current_mon)
 
-                if type(self.current_scene) is not FaintScene:
-                    self.render_mon_sprite()
-                if (type(self.current_scene) is not EnemyFaintScene
-                        and type(self.current_scene) is not PopeScene):
-                    self.render_enemy_sprite()
+            if self.current_scene.show_enemy_stats():
+                self.stats.render_enemy_stats(self.current_enemy)
+
+            if self.current_scene.show_mon_sprite():
+                self.render_mon_sprite()
+
+            if self.current_scene.show_enemy_sprite():
+                self.render_enemy_sprite()
 
             pygame.display.flip()
             self.clock.tick(60)

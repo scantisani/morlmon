@@ -33,10 +33,6 @@ class Stats:
         self.screen = screen
         self.font = font
 
-    def render(self, mon, enemy):
-        self.render_mon_stats(mon)
-        self.render_enemy_stats(enemy)
-
     def render_mon_stats(self, mon):
         health = self.font.render(str(mon.health))[0]
         max_health = self.font.render(str(mon.max_health))[0]

@@ -24,6 +24,18 @@ class Scene:
     def render(self):
         pass
 
+    def show_mon_sprite(self):
+        return True
+
+    def show_enemy_sprite(self):
+        return True
+
+    def show_mon_stats(self):
+        return True
+
+    def show_enemy_stats(self):
+        return True
+
     @staticmethod
     def __restart_text_scroll__():
         # restart the text scrolling timer

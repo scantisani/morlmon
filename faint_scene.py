@@ -21,6 +21,9 @@ class FaintScene(Scene):
 
         self.bg = pygame.image.load('images/moveeffect.png')
 
+    def show_mon_sprite(self):
+        return False
+
     def render(self):
         if self.sprite_height > 0:
             self.screen.blit(self.bg, (0, 0))

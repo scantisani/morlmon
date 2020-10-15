@@ -22,6 +22,18 @@ class WantsToFightScene(Scene):
     def handle_text_scroll(self):
         self.done = True
 
+    def show_enemy_sprite(self):
+        return False
+
+    def show_mon_sprite(self):
+        return False
+
+    def show_enemy_stats(self):
+        return False
+
+    def show_mon_stats(self):
+        return False
+
     def render(self):
         line1 = self.font.render('THE POPE')[0]
         line2 = self.font.render('wants to fight!')[0]
