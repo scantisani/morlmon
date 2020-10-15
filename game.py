@@ -1,17 +1,17 @@
 import pygame
 import pygame.freetype
 
-from enemy_faint_scene import EnemyFaintScene
-from enemy_move_effect_scene import EnemyMoveEffectScene
+from scenes.enemy_faint_scene import EnemyFaintScene
+from scenes.enemy_move_effect_scene import EnemyMoveEffectScene
 from enemy_party import EnemyParty
 from events import TEXT_SCROLL
-from faint_scene import FaintScene
-from move_effect_scene import MoveEffectScene
-from move_select_scene import MoveSelectScene
+from scenes.faint_scene import FaintScene
+from scenes.move_effect_scene import MoveEffectScene
+from scenes.move_select_scene import MoveSelectScene
 from party import Party
-from pope_scene import PopeScene
+from scenes.pope_scene import PopeScene
 from stats import Stats
-from wants_to_fight_scene import WantsToFightScene
+from scenes.wants_to_fight_scene import WantsToFightScene
 
 
 class Game:

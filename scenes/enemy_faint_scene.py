@@ -1,4 +1,4 @@
-from faint_scene import FaintScene
+from scenes.faint_scene import FaintScene
 
 
 class EnemyFaintScene(FaintScene):

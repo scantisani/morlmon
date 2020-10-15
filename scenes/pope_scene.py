@@ -1,6 +1,6 @@
 import pygame
 
-from effect_scene import EffectScene
+from scenes.effect_scene import EffectScene
 
 
 class PopeScene(EffectScene):

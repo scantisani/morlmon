@@ -1,7 +1,7 @@
 import pygame
 import pygame.freetype
 
-from scene import Scene
+from scenes.scene import Scene
 
 
 class WantsToFightScene(Scene):

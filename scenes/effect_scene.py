@@ -1,7 +1,7 @@
 import pygame
 
 import utils
-from scene import Scene
+from scenes.scene import Scene
 
 
 class EffectScene(Scene):
