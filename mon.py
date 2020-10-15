@@ -1,3 +1,6 @@
+import math
+
+
 class Mon:
     def __init__(self, name, movesets, max_health, level, sprite, epitaph=None):
         self.name = name
@@ -10,6 +13,10 @@ class Mon:
         self.level = level
         self.sprite = sprite
         self.epitaph = self.name + ' dies!' if epitaph is None else epitaph
+
+    def damage(self, damage_fraction):
+        new_health = self.health - math.ceil(self.max_health * damage_fraction)
+        self.health = max(0, new_health)
 
     def health_fraction(self):
         return self.health / self.max_health

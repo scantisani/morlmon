@@ -1,5 +1,3 @@
-import math
-
 import utils
 
 
@@ -13,5 +11,5 @@ class Move:
         return utils.split_text(self.text)
 
     def execute(self, source, target):
-        source.health -= math.ceil(source.max_health * self.self_damage_fraction)
-        target.health -= math.ceil(target.max_health * self.target_damage_fraction)
+        source.damage(self.self_damage_fraction)
+        target.damage(self.target_damage_fraction)
