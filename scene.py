@@ -18,7 +18,8 @@ class Scene:
         pass
 
     def handle_keypress(self, key):
-        pass
+        if key == pygame.K_RETURN:
+            self.handle_text_scroll()
 
     def render(self):
         pass
