@@ -113,6 +113,13 @@ class Game:
         if self.current_enemy.health <= 0:
             return EnemyFaintScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.epitaph())
 
+        # If the TWO GOATS' first moveset is exhausted, use the next moveset for both them and current mon
+        if (self.current_enemy.name == 'TWO GOATS'
+                and self.current_enemy.moveset_index == 1
+                and len(self.current_enemy.moves()) == 0):
+            self.current_mon.use_next_moveset()
+            self.current_enemy.use_next_moveset()
+
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
     def faint_next_scene(self):

@@ -156,6 +156,15 @@ class Party:
                                    "You collect the DRAGON BALLS to revive FUNNY HEIR again, but he dies straight "
                                    "away. BALOO'S ANIME POWER fell!")],
 
+                          [MonMove('LANGUAGE',
+                                   "LANGUAGE, HISTORY, BENJAMIN"),
+                           MonMove('HISTORY',
+                                   "LANGUAGE, HISTORY, BENJAMIN"),
+                           MonMove('BENJAMIN',
+                                   "LANGUAGE, HISTORY, BENJAMIN"),
+                           MonMove('LHB',
+                                   "LANGUAGE, HISTORY, BENJAMIN")],
+
                           [MonMove('MORALITY PONG',
                                    "You play URIEL at MORALITY PONG. It takes ages and the ball disappears.",
                                    target_damage_fraction=0.25),
