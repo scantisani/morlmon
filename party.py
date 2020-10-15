@@ -15,7 +15,7 @@ class Party:
                        MonMove('SUCCUMB', "You succumb to stage 4 SYPHILIS.", self_damage_fraction=1),
                        MonMove('ADOPT KITTEN', "You pet a stray kitten and allow it to follow you home. "
                                                "It's super effective!",
-                               enemy_damage_fraction=0.5)],
+                               target_damage_fraction=0.5)],
                 max_health=55,
                 level=17,
                 sprite=pygame.image.load('images/gauntycrisps.png')),
@@ -23,10 +23,10 @@ class Party:
                 moves=[MonMove('SUMMON WITCHES',
                                "MORGANA, CIRCE, JEZEBEL and their Satanic armies come to your rescue. They put SAVLON "
                                "on your ULCERS!",
-                               enemy_damage_fraction=0.5),
+                               target_damage_fraction=0.5),
                        MonMove('MEME MACHINE',
                                "You hold aloft KING MORL'S ARK! A pillar of holy fire unleashes GOD's wrath!",
-                               enemy_damage_fraction=0.5),
+                               target_damage_fraction=0.5),
                        MonMove('FUNNY HEIR',
                                "You make FUNNY HEIR your Chancellor, but he doesn't seem to like you..."),
                        MonMove('GREET SPAMBOT',

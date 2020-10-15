@@ -56,7 +56,7 @@ class Game:
                 return FaintScene(self.screen, self.font, self.current_mon.sprite)
 
             enemy_move = self.current_enemy.moves[0]
-            enemy_move.execute(self.current_mon)
+            enemy_move.execute(self.current_enemy, self.current_mon)
             self.current_enemy.moves.remove(enemy_move)
 
             return EnemyMoveEffectScene(self.screen, self.font, enemy_move)

@@ -1,14 +1,14 @@
 import pygame
 
-from enemy_move import EnemyMove
 from mon import Mon
+from move import Move
 
 
 class EnemyParty:
     ENEMIES = [Mon(name='SYPHILIS',
-                   moves=[EnemyMove("SYPHILIS used ULCERS! GAUNTY CRISPS' DEFENCE fell!"),
-                          EnemyMove('SYPHILIS used SWOLLEN LYMPH NODES!', 0.5),
-                          EnemyMove("SYPHILIS used BLOTCHY RED RASH! It's super effective!", 0.5)],
+                   moves=[Move("SYPHILIS used ULCERS! GAUNTY CRISPS' DEFENCE fell!"),
+                          Move('SYPHILIS used SWOLLEN LYMPH NODES!', target_damage_fraction=0.5),
+                          Move("SYPHILIS used BLOTCHY RED RASH! It's super effective!", target_damage_fraction=0.5)],
                    max_health=100,
                    level=14,
                    sprite=pygame.image.load('images/syphilis.png'))]
