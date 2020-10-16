@@ -7,13 +7,13 @@ from scenes.enemy_faint_scene import EnemyFaintScene
 from scenes.enemy_move_effect_scene import EnemyMoveEffectScene
 from enemy_party import EnemyParty
 from events import TEXT_SCROLL
-from scenes.entry_scene import EntryScene
 from scenes.fade_to_white_scene import FadeToWhiteScene
 from scenes.faint_scene import FaintScene
 from scenes.mon_entry_scene import MonEntryScene
 from scenes.move_effect_scene import MoveEffectScene
 from scenes.move_select_scene import MoveSelectScene
 from party import Party
+from scenes.ominous_rumbling_scene import OminousRumblingScene
 from scenes.pope.pope_dragon_scene import PopeDragonScene
 from scenes.pope.pope_enough_scene import PopeEnoughScene
 from scenes.pope.pope_faint_scene import PopeFaintScene
@@ -107,6 +107,9 @@ class Game:
         elif type(self.current_scene) is PopeDragonScene:
             return self.pope_dragon_next_scene()
 
+        elif type(self.current_scene) is OminousRumblingScene:
+            return self.ominous_rumbling_next_scene()
+
         else:
             return self.current_scene
 
@@ -173,7 +176,7 @@ class Game:
         self.current_mon.use_next_moveset()
 
         if self.enemies.all_defeated():
-            return FadeToWhiteScene(self.screen, self.font)
+            return OminousRumblingScene(self.screen, self.font)
 
         if self.current_enemy.name == 'FNYHEIR (DRGN)':
             return PopeEnoughScene(self.screen, self.font)
@@ -207,6 +210,9 @@ class Game:
 
     def pope_last_words_next_scene(self):
         return MoveSelectScene(self.screen, self.font, self.current_mon)
+
+    def ominous_rumbling_next_scene(self):
+        return FadeToWhiteScene(self.screen, self.font)
 
     def render_enemy_sprite(self):
         self.screen.blit(self.current_enemy.sprite, self.ENEMY_SPRITE_LOCATION)
