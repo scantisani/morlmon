@@ -211,7 +211,7 @@ class Party:
                                    target_damage_fraction=1)]],
                 max_health=178,
                 level=63,
-                sprite=pygame.image.load('images/martiinus.png'))
+                sprite=pygame.image.load('images/baloo.png'))
             ]
 
     def __init__(self):
