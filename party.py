@@ -110,7 +110,7 @@ class Party:
                                    "You associate France with the colour Blue and are therefore appointed its King!"
                                    "#ANDREW ELDRITCH'S BOURGEOISIE rose!"),
                            MonMove('DREAM',
-                                   "Last night you have a strange vision of the future. You see two goats in "
+                                   "Last night you had a strange vision of the future. You see two goats in "
                                    "Barnstaple."
                                    "#You become confused!"),
                            MonMove('SHEFFIELD',
@@ -139,13 +139,13 @@ class Party:
                           [MonMove('GPREG',
                                    "You would rather die than entertain these options.",
                                    self_damage_fraction=1),
-                           MonMove('FLESH PREG',
+                           MonMove('FLESH PEG',
                                    "You would rather die than entertain these options.",
                                    self_damage_fraction=1),
                            MonMove('POLLINATE',
                                    "You would rather die than entertain these options.",
                                    self_damage_fraction=1),
-                           MonMove('HRPREG',
+                           MonMove('HPREG',
                                    "You would rather die than entertain these options.",
                                    self_damage_fraction=1)]],
                 max_health=167,
