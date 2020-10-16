@@ -26,10 +26,6 @@ from scenes.wants_to_fight_scene import WantsToFightScene
 
 
 class Game:
-    TEXT_BOX_X_START = 40
-    TEXT_BOX_LINE_1_Y = 440
-    TEXT_BOX_LINE_2_Y = 500
-
     MON_SPRITE_LOCATION = (50, 170)
     ENEMY_SPRITE_LOCATION = (400, 20)
 
