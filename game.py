@@ -6,6 +6,7 @@ from scenes.enemy_faint_scene import EnemyFaintScene
 from scenes.enemy_move_effect_scene import EnemyMoveEffectScene
 from enemy_party import EnemyParty
 from events import TEXT_SCROLL
+from scenes.fade_to_white_scene import FadeToWhiteScene
 from scenes.faint_scene import FaintScene
 from scenes.move_effect_scene import MoveEffectScene
 from scenes.move_select_scene import MoveSelectScene
@@ -153,9 +154,12 @@ class Game:
         self.current_enemy = self.enemies.get_next()
         self.current_mon.use_next_moveset()
 
+        if self.enemies.all_defeated():
+            return FadeToWhiteScene(self.screen, self.font)
+
         if self.current_enemy.name == 'FNYHEIR (DRGN)':
             return PopeEnoughScene(self.screen, self.font)
-        elif self.current_enemy.name == 'URIEL':
+        elif self.current_enemy.name == 'THE POPE':
             return PopeStepsScene(self.screen, self.font)
 
         return MoveSelectScene(self.screen, self.font, self.current_mon)

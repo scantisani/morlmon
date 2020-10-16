@@ -101,7 +101,7 @@ class EnemyParty:
                      movesets=[[]],
                      level='??',
                      sprite=pygame.image.load('images/pope.png'),
-                     epitaph='THE POPE falls to the ground. THE LAST HUMAN POPE dies.')
+                     epitaph='THE LAST HUMAN POPE dies.')
                ]
 
     def __init__(self):
@@ -110,6 +110,13 @@ class EnemyParty:
     def get_current(self):
         return self.ENEMIES[self.party_index]
 
+    def all_defeated(self):
+        return self.party_index >= len(self.ENEMIES)
+
     def get_next(self):
         self.party_index += 1
+
+        if self.all_defeated():
+            return self.ENEMIES[-1]
+
         return self.get_current()
