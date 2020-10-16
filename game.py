@@ -123,7 +123,7 @@ class Game:
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
     def move_select_next_scene(self):
-        move = self.current_scene.most_popular_move()
+        move = self.current_scene.selected_move()
         move.execute(self.current_mon, self.current_enemy)
         self.current_mon.disable_move(move)
 
