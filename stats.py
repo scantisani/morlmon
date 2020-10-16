@@ -5,8 +5,8 @@ import pygame
 
 class Stats:
     MON_HEALTH_Y = 330
-    MON_HEALTH_X = 380
-    MAX_MON_HEALTH_X = 500
+    MON_HEALTH_X = 360
+    MAX_MON_HEALTH_X = 480
 
     MON_HEALTH_BAR_X = 388
     MON_HEALTH_BAR_Y = 304
@@ -34,8 +34,8 @@ class Stats:
         self.font = font
 
     def render_mon_stats(self, mon):
-        health = self.font.render(str(mon.health))[0]
-        max_health = self.font.render(str(mon.max_health))[0]
+        health = self.font.render(str(mon.health).rjust(3, ' '))[0]
+        max_health = self.font.render(str(mon.max_health).rjust(3, ' '))[0]
 
         self.screen.blit(health, (self.MON_HEALTH_X, self.MON_HEALTH_Y))
         self.screen.blit(max_health, (self.MAX_MON_HEALTH_X, self.MON_HEALTH_Y))

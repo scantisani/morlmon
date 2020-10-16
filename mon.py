@@ -2,7 +2,7 @@ import math
 
 
 class Mon:
-    def __init__(self, name, movesets, max_health, level, sprite, epitaph=None):
+    def __init__(self, name, movesets, max_health, level, sprite, epitaph=None, entry_message=None):
         self.name = name
         self.movesets = movesets
         self.moveset_index = 0
@@ -13,6 +13,7 @@ class Mon:
         self.level = level
         self.sprite = sprite
         self.epitaph = self.name + ' dies!' if epitaph is None else epitaph
+        self.entry_message = 'Go ' + self.name + '!' if entry_message is None else entry_message
 
     def damage(self, damage_fraction):
         new_health = self.health - math.ceil(self.max_health * damage_fraction)

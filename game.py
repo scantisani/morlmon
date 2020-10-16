@@ -2,12 +2,15 @@ import pygame
 import pygame.freetype
 
 from scenes.chip_spice_scene import ChipSpiceScene
+from scenes.enemy_entry_scene import EnemyEntryScene
 from scenes.enemy_faint_scene import EnemyFaintScene
 from scenes.enemy_move_effect_scene import EnemyMoveEffectScene
 from enemy_party import EnemyParty
 from events import TEXT_SCROLL
+from scenes.entry_scene import EntryScene
 from scenes.fade_to_white_scene import FadeToWhiteScene
 from scenes.faint_scene import FaintScene
+from scenes.mon_entry_scene import MonEntryScene
 from scenes.move_effect_scene import MoveEffectScene
 from scenes.move_select_scene import MoveSelectScene
 from party import Party
@@ -56,6 +59,9 @@ class Game:
         if type(self.current_scene) is WantsToFightScene:
             return self.wants_to_fight_next_scene()
 
+        if type(self.current_scene) is MonEntryScene:
+            return self.mon_entry_next_scene()
+
         elif type(self.current_scene) is MoveSelectScene:
             return self.move_select_next_scene()
 
@@ -70,6 +76,12 @@ class Game:
 
         elif type(self.current_scene) is EnemyFaintScene:
             return self.enemy_faint_next_scene()
+
+        elif type(self.current_scene) is EnemyEntryScene:
+            if self.current_scene.first_enemy_entry:
+                return self.first_enemy_entry_next_scene()
+            else:
+                return self.enemy_entry_next_scene()
 
         elif type(self.current_scene) is ReincarnationScene:
             return self.reincarnation_next_scene()
@@ -99,6 +111,12 @@ class Game:
             return self.current_scene
 
     def wants_to_fight_next_scene(self):
+        return EnemyEntryScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.entry_message, True)
+
+    def first_enemy_entry_next_scene(self):
+        return MonEntryScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.entry_message)
+
+    def mon_entry_next_scene(self):
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
     def move_select_next_scene(self):
@@ -142,7 +160,7 @@ class Game:
         if self.current_mon.name == 'ADRWEDRTCH':
             return ReincarnationScene(self.screen, self.font)
 
-        return MoveSelectScene(self.screen, self.font, self.current_mon)
+        return MonEntryScene(self.screen, self.font, self.current_mon.sprite, self.current_mon.entry_message)
 
     def reincarnation_next_scene(self):
         return ChipSpiceScene(self.screen, self.font)
@@ -162,6 +180,9 @@ class Game:
         elif self.current_enemy.name == 'THE POPE':
             return PopeStepsScene(self.screen, self.font)
 
+        return EnemyEntryScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.entry_message)
+
+    def enemy_entry_next_scene(self):
         return MoveSelectScene(self.screen, self.font, self.current_mon)
 
     def pope_enough_next_scene(self):
@@ -175,7 +196,7 @@ class Game:
         return PopeDragonScene(self.screen, self.font)
 
     def pope_dragon_next_scene(self):
-        return MoveSelectScene(self.screen, self.font, self.current_mon)
+        return EnemyEntryScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.entry_message, True)
 
     def pope_steps_next_scene(self):
         self.current_mon.damage(0.2)
