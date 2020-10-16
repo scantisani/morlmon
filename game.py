@@ -22,6 +22,7 @@ from scenes.pope.pope_knock_scene import PopeKnockScene
 from scenes.pope.pope_last_words_scene import PopeLastWordsScene
 from scenes.pope.pope_steps_scene import PopeStepsScene
 from scenes.reincarnation_scene import ReincarnationScene
+from scenes.trainer_entry_scene import TrainerEntryScene
 from stats import Stats
 from scenes.wants_to_fight_scene import WantsToFightScene
 
@@ -41,7 +42,7 @@ class Game:
         self.enemies = EnemyParty()
         self.current_enemy = self.enemies.get_current()
 
-        self.current_scene = WantsToFightScene(self.screen, self.font)
+        self.current_scene = TrainerEntryScene(self.screen, self.font)
         self.stats = Stats(self.screen, self.font)
 
     def build_next_scene(self):
@@ -49,6 +50,9 @@ class Game:
 
         if not screen_done:
             return self.current_scene
+
+        if type(self.current_scene) is TrainerEntryScene:
+            return self.trainer_entry_next_scene()
 
         if type(self.current_scene) is WantsToFightScene:
             return self.wants_to_fight_next_scene()
@@ -106,6 +110,9 @@ class Game:
 
         else:
             return self.current_scene
+
+    def trainer_entry_next_scene(self):
+        return WantsToFightScene(self.screen, self.font)
 
     def wants_to_fight_next_scene(self):
         return EnemyEntryScene(self.screen, self.font, self.current_enemy.sprite, self.current_enemy.entry_message, True)
