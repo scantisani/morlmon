@@ -8,7 +8,7 @@ class TrainerEntryScene(Scene):
     def __init__(self, screen, font):
         super().__init__(screen, font)
 
-        self.bg = pygame.image.load('images/blank.png')
+        self.bg = pygame.image.load('images/justdialog.png')
         self.pope_sprite = pygame.transform.scale(pygame.image.load('images/pope.png'), (192, 192))
         self.pope_x = 0 - self.pope_sprite.get_width()
         self.pope_y = locations.ENEMY_SPRITE_Y

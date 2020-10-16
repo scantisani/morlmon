@@ -9,7 +9,7 @@ class ReincarnationScene(Scene):
     def __init__(self, screen, font):
         super().__init__(screen, font)
 
-        self.bg = pygame.image.load('images/blank.png')
+        self.bg = pygame.image.load('images/justdialog.png')
 
         self.glitterhoof = pygame.image.load('images/glitterhoof.png')
         self.eldritch = pygame.image.load('images/eldritch.png')
