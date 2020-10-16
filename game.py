@@ -1,6 +1,7 @@
 import pygame
 import pygame.freetype
 
+import locations
 from scenes.chip_spice_scene import ChipSpiceScene
 from scenes.enemy_entry_scene import EnemyEntryScene
 from scenes.enemy_faint_scene import EnemyFaintScene
@@ -26,9 +27,6 @@ from scenes.wants_to_fight_scene import WantsToFightScene
 
 
 class Game:
-    MON_SPRITE_LOCATION = (50, 170)
-    ENEMY_SPRITE_LOCATION = (400, 20)
-
     def __init__(self):
         pygame.init()
         pygame.display.set_caption('MORLMON')
@@ -211,10 +209,10 @@ class Game:
         return FadeToWhiteScene(self.screen, self.font)
 
     def render_enemy_sprite(self):
-        self.screen.blit(self.current_enemy.sprite, self.ENEMY_SPRITE_LOCATION)
+        self.screen.blit(self.current_enemy.sprite, locations.ENEMY_SPRITE_LOCATION)
 
     def render_mon_sprite(self):
-        self.screen.blit(self.current_mon.sprite, self.MON_SPRITE_LOCATION)
+        self.screen.blit(self.current_mon.sprite, locations.MON_SPRITE_LOCATION)
 
     def run(self):
         while True:

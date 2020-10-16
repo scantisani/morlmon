@@ -1,11 +1,10 @@
 import pygame
 
+import locations
 from scenes.faint_scene import FaintScene
 
 
 class PopeFaintScene(FaintScene):
-    ENEMY_SPRITE_LOCATION = (400, 20)
-
     def __init__(self, screen, font, sprite, epitaph):
         super().__init__(screen, font, sprite, epitaph)
 
@@ -19,4 +18,4 @@ class PopeFaintScene(FaintScene):
 
     def render(self):
         super(PopeFaintScene, self).render()
-        self.screen.blit(self.pope_sprite, self.ENEMY_SPRITE_LOCATION)
+        self.screen.blit(self.pope_sprite, locations.ENEMY_SPRITE_LOCATION)

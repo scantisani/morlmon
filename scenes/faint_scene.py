@@ -1,10 +1,11 @@
 import pygame
 
+import locations
 from scenes.effect_scene import EffectScene
 
 
 class FaintScene(EffectScene):
-    def __init__(self, screen, font, sprite, epitaph, sprite_x=50, sprite_y=170):
+    def __init__(self, screen, font, sprite, epitaph, sprite_x=locations.MON_SPRITE_X, sprite_y=locations.MON_SPRITE_Y):
         super().__init__(screen, font, epitaph)
         self.sprite = sprite
 
