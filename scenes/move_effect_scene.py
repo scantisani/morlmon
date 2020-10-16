@@ -7,13 +7,14 @@ class MoveEffectScene(EffectScene):
     def __init__(self, screen, font, move):
         super().__init__(screen, font, move.text)
 
+        self.hurts_target = move.target_damage_fraction > 0
         self.hurts_self = move.self_damage_fraction > 0
 
         self.scene_start = pygame.time.get_ticks()
         self.damage_intervals = [(0, 100), (200, 300), (400, 500)]
 
     def show_enemy_sprite(self):
-        if self.hurts_self:
+        if not self.hurts_target:
             return True
 
         return not self.__in_damage_interval__()

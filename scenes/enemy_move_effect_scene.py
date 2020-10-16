@@ -9,7 +9,7 @@ class EnemyMoveEffectScene(MoveEffectScene):
         return not self.__in_damage_interval__()
 
     def show_mon_sprite(self):
-        if self.hurts_self:
+        if not self.hurts_target:
             return True
 
         return not self.__in_damage_interval__()
