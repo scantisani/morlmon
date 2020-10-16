@@ -3,13 +3,19 @@ def split_text(text):
     text_left = text
 
     while len(text_left) > 18:
-        next_17_chars = text_left[:18]
-        last_space_index = next_17_chars.rfind(' ')
-        if last_space_index == -1:
-            last_space_index = 17
+        next_18_chars = text_left[:18]
+        split_at = 17
 
-        lines.append(text_left[:last_space_index + 1])
-        text_left = text_left[last_space_index + 1:]
+        split_character_index = next_18_chars.find('#')
+        if not split_character_index == -1:
+            split_at = split_character_index
+        else:
+            last_space_index = next_18_chars.rfind(' ')
+            if not last_space_index == -1:
+                split_at = last_space_index
+
+        lines.append(text_left[:split_at + 1])
+        text_left = text_left[split_at + 1:]
 
     lines.append(text_left)
     return lines

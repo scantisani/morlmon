@@ -8,14 +8,15 @@ class Party:
     MONS = [Mon(name='GNTYCRSPS',
                 movesets=[[MonMove('MOURN FATHER',
                                    "You admire KING MORL's many chaste wives and vow to marry one off to a horse one "
-                                   "day. It's not very effective..."),
+                                   "day."
+                                   "#It's not very effective..."),
                            MonMove('SON OF CATBOX',
                                    "Son of Catbox of Son of Catbox's Host declared Son of Catbox's Host "
-                                   "Claim on Pissing Myself War on Queen Gaunty Crisps 'The Bear'. "
-                                   "...This is incomprehensible."),
+                                   "Claim on Pissing Myself War on Queen Gaunty Crisps 'The Bear'."
+                                   "##...This is incomprehensible."),
                            MonMove('SUCCUMB', "You succumb to stage 4 SYPHILIS.", self_damage_fraction=1),
                            MonMove('ADOPT KITTEN', "You pet a stray kitten and allow it to follow you home. "
-                                                   "It's super effective!",
+                                                   "#It's super effective!",
                                    target_damage_fraction=0.5)]],
                 max_health=55,
                 level=17,
@@ -23,17 +24,19 @@ class Party:
 
             Mon(name='LUFTI',
                 movesets=[[MonMove('SUMMON WITCHES',
-                                   "MORGANA, CIRCE, JEZEBEL and their Satanic armies come to your rescue. They put "
-                                   "SAVLON on your ULCERS!",
+                                   "MORGANA, CIRCE, JEZEBEL and their Satanic armies come to your rescue."
+                                   "#They put SAVLON on your ULCERS!",
                                    target_damage_fraction=0.5),
                            MonMove('MEME MACHINE',
-                                   "You hold aloft KING MORL'S ARK! A pillar of holy fire unleashes GOD's wrath!",
+                                   "You hold aloft KING MORL'S ARK!"
+                                   "#A pillar of holy fire unleashes GOD's wrath!",
                                    target_damage_fraction=0.5),
                            MonMove('FUNNY HEIR',
                                    "You make FUNNY HEIR your Chancellor, but he doesn't seem to like you..."),
                            MonMove('GREET SPAMBOT',
-                                   "A Russian spambot called LEUDUSTNETTICAR85MIK offers to build you a website. You "
-                                   "make him your Court Physician. Why?")],
+                                   "A Russian spambot called LEUDUSTNETTICAR85MIK offers to build you a website."
+                                   "#You make him your Court Physician."
+                                   "#Why?")],
 
                           [MonMove('CALL ON SATAN',
                                    "Before you can do anything, FUNNY HEIR takes you to the woods and kills you.",
@@ -53,30 +56,34 @@ class Party:
 
             Mon(name='FUNNY HEIR',
                 movesets=[[MonMove('BISEXUALITY',
-                                   "You meet a LUSH COUNTRY BEAR and seduce him on the riverbank. FUNNY HEIR's "
-                                   "HORNINESS rose!"),
+                                   "You meet a LUSH COUNTRY BEAR and seduce him on the riverbank."
+                                   "#FUNNY HEIR's HORNINESS rose!"),
                            MonMove('BAN TROUSERS',
-                                   "You remove your trousers. Everyone else joins in. FUNNY HEIR'S HORNINESS rose!"),
+                                   "You remove your trousers. Everyone else joins in."
+                                   "#FUNNY HEIR'S HORNINESS rose!"),
                            MonMove('CRUSADE',
                                    "Everyone sees a large Irish Bear lug the MEME MACHINE around Galilee and says "
-                                   "'fair enough'. FUNNY HEIR'S SELF ESTEEM rose!"),
+                                   "'fair enough'."
+                                   "#FUNNY HEIR'S SELF ESTEEM rose!"),
                            MonMove('JESUS FORESKIN',
                                    "You make a grab for the HOLY PREPUCE and slip it over your finger to become more "
-                                   "Holy. Literally nothing happens.")],
+                                   "Holy."
+                                   "#Literally nothing happens.")],
 
                           [MonMove('GOLDEN ARM',
-                                   "You tear off your REAL BEAR ARM and replace it with a GOLDEN ARM. You hit BORLEY "
-                                   "over the head.",
+                                   "You tear off your REAL BEAR ARM and replace it with a GOLDEN ARM."
+                                   "#You hit BORLEY over the head.",
                                    target_damage_fraction=0.5),
                            MonMove('LIGHTHOUSE',
-                                   "You simultaneously commission a pro - cuckoldry HARBOUR and an anti - cuckoldry "
-                                   "DON'T SLEEP WITH MY WIFEHOUSE. TWITCH CHAT'S HORNINESS rose!"),
+                                   "You simultaneously commission a pro-cuckoldry HARBOUR and an anti-cuckoldry "
+                                   "DON'T SLEEP WITH MY WIFEHOUSE."
+                                   "#TWITCH CHAT'S HORNINESS rose!"),
                            MonMove('MAXIMUM BEARS',
-                                   "You fuck literally everyone and flood the world with Funny Bears. FUNNY HEIR'S "
-                                   "HORNINESS sharply fell!"),
+                                   "You fuck literally everyone and flood the world with Funny Bears."
+                                   "#FUNNY HEIR'S HORNINESS sharply fell!"),
                            MonMove('KINGS OF LEON',
-                                   "You shave KINGS OF LEON to look like he's in SYSTEM OF A DOWN. NU METAL's "
-                                   "POPULARITY rose!")],
+                                   "You shave KINGS OF LEON to look like he's in SYSTEM OF A DOWN."
+                                   "#NU METAL's POPULARITY rose!")],
 
                           [MonMove('DIE', "THE POPE has had enough of this. "
                                    "THE POPE caves your head in.", self_damage_fraction=1)]],
@@ -96,14 +103,16 @@ class Party:
             Mon(name='ADRWEDRTCH',
                 movesets=[[MonMove('GOPHER',
                                    "Your LUSH COUNTRY BEAR is actually a LUSH COUNTRY GOPHER and can therefore "
-                                   "assassinate people. It almost works!",
+                                   "assassinate people."
+                                   "#It almost works!",
                                    target_damage_fraction=0.75),
                            MonMove('BLUE COUNTRY',
-                                   "You associate France with the colour Blue and are therefore appointed its King! "
-                                   "ANDREW ELDRITCH'S BOURGEOISIE rose!"),
+                                   "You associate France with the colour Blue and are therefore appointed its King!"
+                                   "#ANDREW ELDRITCH'S BOURGEOISIE rose!"),
                            MonMove('DREAM',
                                    "Last night you have a strange vision of the future. You see two goats in "
-                                   "Barnstaple. You become confused!"),
+                                   "Barnstaple."
+                                   "#You become confused!"),
                            MonMove('SHEFFIELD',
                                    "You retire to Sheffield to take up a career as a Scryer Horse.",
                                    self_damage_fraction=1)]],
@@ -115,16 +124,17 @@ class Party:
             Mon(name='MARTIINUS',
                 movesets=[[MonMove('SUPER SAIYAN',
                                    "You tap into your hidden Cornish powers and become the hope of the Universe. "
-                                   "MARTIINUS'S ANIME POWER rose!"),
+                                   "#MARTIINUS'S ANIME POWER rose!"),
                            MonMove('URSINE HERESY',
-                                   "We're not making the Bear a Pope fast enough! The prophet Baloo founds BEAR "
-                                   "CATHOLICISM! MARTIINUS'S ORTHODOXY fell!"),
+                                   "We're not making the Bear a Pope fast enough!"
+                                   "#The prophet Baloo founds BEAR CATHOLICISM!"
+                                   "#MARTIINUS'S ORTHODOXY fell!"),
                            MonMove('AGE 30 YEARS',
                                    "You apply some old age makeup and totally fuck up your joints and legs.",
                                    self_damage_fraction=0.5),
                            MonMove('FROG',
-                                   "You paint yourself green and jump around saying 'ribbit'. "
-                                   "FUNNY HEIR became confused!")],
+                                   "You paint yourself green and jump around saying 'ribbit'."
+                                   "#FUNNY HEIR became confused!")],
 
                           [MonMove('GPREG',
                                    "You would rather die than entertain these options.",
@@ -144,17 +154,19 @@ class Party:
 
             Mon(name='BALOO',
                 movesets=[[MonMove('BIG MAD CUP',
-                                   "You drink from the HOLY GRAIL. BALOO'S DEFENSE sharply rose!"),
+                                   "You drink from the HOLY GRAIL."
+                                   "#BALOO'S DEFENSE sharply rose!"),
                            MonMove('TALESPIN?',
-                                   "You decide you're the BALOO from TALESPIN and not the JUNGLE BOOK. BALOO'S CARTOON "
-                                   "TRIVIA rose!"),
+                                   "You decide you're the BALOO from TALESPIN and not the JUNGLE BOOK."
+                                   "#BALOO'S CARTOON TRIVIA rose!"),
                            MonMove('REMORSELY',
-                                   "You journey to Spain with DALE COOPER to kill SEAN REMORSELY. Your actions hurt "
-                                   "the TWO GOATS emotionally.",
+                                   "You journey to Spain with DALE COOPER to kill SEAN REMORSELY."
+                                   "#Your actions hurt the TWO GOATS emotionally.",
                                    target_damage_fraction=0.5),
                            MonMove('DRAGON BALLS',
                                    "You collect the DRAGON BALLS to revive FUNNY HEIR again, but he dies straight "
-                                   "away. BALOO'S ANIME POWER fell!")],
+                                   "away."
+                                   "#BALOO'S ANIME POWER fell!")],
 
                           [MonMove('LANGUAGE',
                                    "LANGUAGE, HISTORY, BENJAMIN"),
@@ -177,21 +189,25 @@ class Party:
                                    "INSULIN!",
                                    target_damage_fraction=0.25),
                            MonMove('OPEN THE ARK',
-                                   "You prize open KING MORL'S MEME MACHINE to find the FIRST MEME. A tidal wave of "
-                                   "MASS CONVERSIONS flattens URIEL'S morale!",
+                                   "You prize open KING MORL'S MEME MACHINE to find the FIRST MEME."
+                                   "#A tidal wave of MASS CONVERSIONS flattens URIEL'S morale!",
                                    target_damage_fraction=0.25)],
 
                           [MonMove('THE',
-                                   "You pick up the LANCE OF LONGINUS and strike the POPE through his heart!",
+                                   "You pick up the LANCE OF LONGINUS and strike the POPE through his heart!"
+                                   "##THE POPE falls to the ground.",
                                    target_damage_fraction=1),
                            MonMove('LANCE',
-                                   "You pick up the LANCE OF LONGINUS and strike the POPE through his heart!",
+                                   "You pick up the LANCE OF LONGINUS and strike the POPE through his heart!"
+                                   "##THE POPE falls to the ground.",
                                    target_damage_fraction=1),
                            MonMove('OF',
-                                   "You pick up the LANCE OF LONGINUS and strike the POPE through his heart!",
+                                   "You pick up the LANCE OF LONGINUS and strike the POPE through his heart!"
+                                   "##THE POPE falls to the ground.",
                                    target_damage_fraction=1),
                            MonMove('LONGINUS',
-                                   "You pick up the LANCE OF LONGINUS and strike the POPE through his heart!",
+                                   "You pick up the LANCE OF LONGINUS and strike the POPE through his heart!"
+                                   "##THE POPE falls to the ground.",
                                    target_damage_fraction=1)]],
                 max_health=178,
                 level=63,
